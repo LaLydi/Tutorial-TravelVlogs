@@ -42,7 +42,7 @@ struct AppMain: App {
   }
   
   init() {
-    setMixWithOthersPlaybackCategory()
+    setVideoPlaybackCategory()
   }
   
   private func setMixWithOthersPlaybackCategory() {
@@ -51,5 +51,9 @@ struct AppMain: App {
       mode: AVAudioSession.Mode.moviePlayback,
       options: [.mixWithOthers]
     )
+  }
+  
+  private func setVideoPlaybackCategory() {
+    try? AVAudioSession.sharedInstance().setCategory(.playback)
   }
 }

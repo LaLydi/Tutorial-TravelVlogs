@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		006B4C6629C8E25500267747 /* VideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006B4C6529C8E25500267747 /* VideoPlayerView.swift */; };
 		1839F4B025190F2A00BB00F1 /* AppMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1839F4AF25190F2A00BB00F1 /* AppMain.swift */; };
 		18D775C522AD944300AE281E /* VideoFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D775C422AD944300AE281E /* VideoFeedView.swift */; };
 		18D775C722AD944400AE281E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18D775C622AD944400AE281E /* Assets.xcassets */; };
@@ -32,6 +33,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		006B4C6529C8E25500267747 /* VideoPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerView.swift; sourceTree = "<group>"; };
 		1839F4AF25190F2A00BB00F1 /* AppMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMain.swift; sourceTree = "<group>"; };
 		18D775BD22AD944300AE281E /* TravelVlogs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelVlogs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18D775C422AD944300AE281E /* VideoFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoFeedView.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				302DE07D263DCDB600200D25 /* LoopingPlayerView.swift */,
+				006B4C6529C8E25500267747 /* VideoPlayerView.swift */,
 			);
 			path = VideoPlayers;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 				302DE07E263DCDB600200D25 /* LoopingPlayerView.swift in Sources */,
 				30980A40262D0939002B6DB1 /* VideoRow.swift in Sources */,
 				18D775C522AD944300AE281E /* VideoFeedView.swift in Sources */,
+				006B4C6629C8E25500267747 /* VideoPlayerView.swift in Sources */,
 				30980A1C262CF372002B6DB1 /* Video.swift in Sources */,
 				1839F4B025190F2A00BB00F1 /* AppMain.swift in Sources */,
 				3052FF82262DCFB700F01491 /* Utils.swift in Sources */,
