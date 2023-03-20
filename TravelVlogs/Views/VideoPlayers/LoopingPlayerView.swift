@@ -31,17 +31,87 @@
 /// THE SOFTWARE.
 
 import SwiftUI
+import AVFoundation
+
+struct LoopingPlayerView: UIViewRepresentable {
+  let videoURLs: [URL]
+  
+  @Binding var volume: Float
+  @Binding var rate: Float
+  
+  func makeUIView(context: Context) -> LoopingPlayerUIView {
+    let view = LoopingPlayerUIView(urls: videoURLs)
+    view.setVolume(volume)
+    view.setRate(rate)
+    return view
+  }
+
+  func updateUIView(_ uiView: LoopingPlayerUIView, context: Context) {
+    uiView.setVolume(volume)
+    uiView.setRate(rate)
+  }
+  
+  static func dismantleUIView(_ uiView: LoopingPlayerUIView, coordinator: ()) {
+    uiView.cleanup()
+  }
+}
+
 
 final class LoopingPlayerUIView: UIView {
 	private var allURLs: [URL]
+  private var player: AVQueuePlayer?
+  private var token: NSKeyValueObservation?
+  
+  override class var layerClass: AnyClass {
+    return AVPlayerLayer.self
+  }
+  
+  var playerLayer: AVPlayerLayer {
+    return layer as! AVPlayerLayer
+  }
 
 	init(urls: [URL]) {
 		allURLs = urls
+    player = AVQueuePlayer()
 
 		super.init(frame: .zero)
+    
+    addAllVideosToPlayer()
+    
+    playerLayer.player = player
+    
+    token = player?.observe(\.currentItem) { [weak self] player, _ in
+      if player.items().count == 1 {
+        self?.addAllVideosToPlayer()
+      }
+    }
 	}
 
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
+  
+  private func addAllVideosToPlayer() {
+    for url in allURLs {
+      let asset = AVURLAsset(url: url)
+      let item = AVPlayerItem(asset: asset)
+      
+      player?.insert(item, after: player?.items().last)
+    }
+  }
+  
+  func setVolume(_ value: Float) {
+    player?.volume = value
+  }
+  
+  func setRate(_ value: Float) {
+    player?.rate = value
+  }
+  
+  func cleanup() {
+    player?.pause()
+    player?.removeAllItems()
+    player = nil
+  }
+
 }
