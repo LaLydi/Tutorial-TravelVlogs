@@ -31,6 +31,7 @@
 /// THE SOFTWARE.
 
 import SwiftUI
+import AVFoundation
 
 @main
 struct AppMain: App {
@@ -38,5 +39,17 @@ struct AppMain: App {
     WindowGroup {
       VideoFeedView()
     }
+  }
+  
+  init() {
+    setMixWithOthersPlaybackCategory()
+  }
+  
+  private func setMixWithOthersPlaybackCategory() {
+    try? AVAudioSession.sharedInstance().setCategory(
+      AVAudioSession.Category.ambient,
+      mode: AVAudioSession.Mode.moviePlayback,
+      options: [.mixWithOthers]
+    )
   }
 }
