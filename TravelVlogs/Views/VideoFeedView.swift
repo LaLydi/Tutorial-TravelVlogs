@@ -34,7 +34,7 @@ import SwiftUI
 import AVKit
 
 struct VideoFeedView: View {
-  private let videos = Video.fetchLocalVideos()
+  private let videos = Video.fetchLocalVideos() + Video.fetchRemoteVideos()
   
   @State private var selectedVideo: Video?
 
